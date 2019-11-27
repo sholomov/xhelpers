@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <stdarg.h>
 
-#include <ar10/sx_types.h>
+#include <sx_types.h>
 
 #ifdef WIN32
 	#pragma warning(push)

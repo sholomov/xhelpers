@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 
-#include <ar10/filesystem.h>
-#include <ar10/sx_path.h>
+#include <filesystem.h>
+#include <sx_path.h>
 
 #ifdef WIN32
 #include <io.h>

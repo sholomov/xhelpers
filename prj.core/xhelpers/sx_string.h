@@ -7,7 +7,7 @@
 #ifndef SX_STRING_H
 #define SX_STRING_H
 
-#include <ar10/sx_tfstr.h>
+#include <sx_tfstr.h>
 
 namespace sx {
 

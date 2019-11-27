@@ -7,7 +7,7 @@
 #ifndef SX_CAST_H
 #define SX_CAST_H
 
-#include <ar10/castex.h>
+#include <castex.h>
 
 
 #endif // SX_STRING_H

@@ -7,7 +7,7 @@
 #ifndef SX_TFSTR_H
 #define SX_TFSTR_H
 
-#include <ar10/sx_str.h>
+#include <sx_str.h>
 
 #include <string>
 #include <vector>

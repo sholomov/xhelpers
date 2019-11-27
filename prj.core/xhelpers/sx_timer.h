@@ -9,8 +9,7 @@
 #ifndef SX_TIMER_H
 #define SX_TIMER_H
 
-#include <ar10/articker.h>
-#include <ar10/sx_string.h>
+#include <sx_string.h>
 
 namespace sx {
 
