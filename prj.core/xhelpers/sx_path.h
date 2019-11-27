@@ -11,8 +11,8 @@
 
 #include <stdlib.h>
 
-#include <filesystem.h>
-#include <sx_string.h>
+#include <ar10/filesystem.h>
+#include <ar10/sx_string.h>
 
 #ifdef WIN32
 #include <windows.h>
@@ -39,9 +39,10 @@ public:
   xpath& operator = (const std::string& path );
 
   xpath& getModuleFileName();                           //!< Возвращает полный путь к исполняемому модулю (в конце - '/')
+  xpath& getModuleDirPath();                            //!< Возвращает полный путь к исполняемому модулю (в конце - '/')
   xpath& getCurrentDirectory();                         //!< Возвращает полный путь к текущей директории (в конце - '/')
   xpath& getTempPath();                                 //!< Возвращает полный путь к директории для временных файлов (в конце - '/')
-  xpath& getFullPathName();                             //!< Возвращает полный путь к директории для временных файлов (в конце - '/')
+  xpath& getFullPathName();                             //!< Преобразует данный xpath к полному пути
 
   xpath& canonize(bool bWindows = false);               //!< Нормализация разделителей "\"->"/" и прочее
 
@@ -130,10 +131,18 @@ inline xpath::xpath(const char* drv, const char* dir, const char* name, const ch
 }
 
 // Возвращает полный путь кисполняемому модулю (в конце - '/')
-inline xpath& xpath::getModuleFileName()                            
+// Todo: reimplement to return module filename, not directory
+inline xpath& xpath::getModuleFileName()
 {
   *this = ar::Filesystem::moduleDirPath();
-  return *this;         
+  return *this;
+}
+
+// Возвращает полный путь кисполняемому модулю (в конце - '/')
+inline xpath& xpath::getModuleDirPath()                            
+{
+  *this = ar::Filesystem::moduleDirPath();
+  return *this;
 }
 
 #ifndef _MAX_PATH
@@ -373,7 +382,7 @@ inline xpath& xpath::makePath(const xpath& drv, const xpath& dir, const xpath& n
   return makePath(drv.c_str(), dir.c_str(), name.c_str(), ext.c_str());
 }
 
-// Возвращает полный путь к директории для временных файлов (в конце - '/')
+// Преобразует данный xpath к полному пути
 inline xpath& xpath::getFullPathName()
 {
   char buf[_MAX_PATH] = {0};
