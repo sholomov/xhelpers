@@ -17,8 +17,8 @@
 #include <ctime>
 #include <iomanip>
 
-#include <ar10/sx_string.h>
-#include <ar10/time_stamp.h>
+#include <sx_string.h>
+#include <time_stamp.h>
 
 namespace cp  //!< Cognitive Pilot namespace
 {

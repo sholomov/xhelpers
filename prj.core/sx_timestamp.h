@@ -18,7 +18,7 @@
 #include <cstring>
 #include <cmath>
 
-#include <ar10/system.h>
+#include <system.h>
 
 namespace ar
 {
