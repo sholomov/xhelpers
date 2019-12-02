@@ -21,7 +21,6 @@
 #include <time_stamp.h>
 
 namespace sx {
-{
 
 //! Forward declaration for the json_cast helper class, used in json_string
 template <class T> class json_cast;

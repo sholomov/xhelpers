@@ -20,8 +20,7 @@
 
 #include <system.h>
 
-namespace sx
-{
+namespace sx {
 
 //! @class timestamp_t
 //! @brief Struct timestamp_t is to be defined as timespec or via timespec
