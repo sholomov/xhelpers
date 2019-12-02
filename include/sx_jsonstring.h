@@ -5,8 +5,8 @@
 //!@brief   Helper class for json parsing and convertion 
 //!
 
-#ifndef __CP_JSON_STRING_H
-#define __CP_JSON_STRING_H
+#ifndef SX_JSON_STRING_H
+#define SX_JSON_STRING_H
 
 #pragma once
 
@@ -20,7 +20,7 @@
 #include <sx_string.h>
 #include <time_stamp.h>
 
-namespace cp  //!< Cognitive Pilot namespace
+namespace sx {
 {
 
 //! Forward declaration for the json_cast helper class, used in json_string
@@ -327,6 +327,6 @@ inline const T& json_cast<T>::fromString(json_string str)
   return type; 
 }
 
-};  // namespace cp
+};  // namespace sx
 
 #endif

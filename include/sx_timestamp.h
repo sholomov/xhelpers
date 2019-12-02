@@ -5,8 +5,8 @@
 //!@brief   Types for operating with global time with milliseconds precision
 //!
 
-#ifndef AR_TIMESTAMP_H
-#define AR_TIMESTAMP_H
+#ifndef SX_TIMESTAMP_H
+#define SX_TIMESTAMP_H
 
 #pragma once
 
@@ -20,7 +20,7 @@
 
 #include <system.h>
 
-namespace ar
+namespace sx
 {
 
 //! @class timestamp_t
