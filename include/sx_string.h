@@ -22,7 +22,6 @@ public:
     tf_string(std::string s) { std::string::operator=(s); }
     virtual ~tf_string() { ; }
     tf_string& replace(const char* from, const char* to)
-
     {
         sx::replace_all(*this,std::string(from),std::string(to));
         return *this;
@@ -100,8 +99,8 @@ public:
 
     bool ends_with(const char* postfix)
     {
-		    return sx::ends_with(*this,std::string(postfix));
-	  }
+        return sx::ends_with(*this,std::string(postfix));
+    }
 
     bool consist_of(const char* symbols)
     {
