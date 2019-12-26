@@ -2,7 +2,7 @@
 //!@file    xhelpers/sx_timestamp.h
 //!@author  Sholomov Dmitry
 //!@date    11.12.2017
-//!@brief   Types for operating with global time with milliseconds precision
+//!@brief   Types for operating with global time with nanoseconds precision
 //!
 
 #ifndef SX_TIMESTAMP_H
