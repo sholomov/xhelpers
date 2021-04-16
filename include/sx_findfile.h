@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#include <filesystem.h>
+#include <sx_system.h>
 #include <sx_path.h>
 
 #ifdef WIN32

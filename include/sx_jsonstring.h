@@ -18,7 +18,7 @@
 #include <iomanip>
 
 #include <sx_string.h>
-#include <time_stamp.h>
+#include <sx_timestamp.h>
 
 namespace sx {
 

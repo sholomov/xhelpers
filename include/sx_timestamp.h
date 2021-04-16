@@ -17,7 +17,7 @@
 #include <cstring>
 #include <cmath>
 
-#include <ar10/system.h>
+#include <sx_system.h>
 
 namespace sx
 {

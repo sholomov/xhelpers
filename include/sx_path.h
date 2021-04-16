@@ -11,9 +11,9 @@
 
 #include <stdlib.h>
 
-#include <ar10/filesystem.h>
-#include <ar10/sx_string.h>
-#include <ar10/sx_findfile.h>
+#include <sx_system.h>
+#include <sx_string.h>
+#include <sx_findfile.h>
 
 namespace sx {
 
