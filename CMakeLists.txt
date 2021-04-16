@@ -10,15 +10,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo" CACHE ST
 
 # Build options
 # -----------------------------------------------------------------------
-option(BUILD_SANDBOX "Specifies whether sandbox should be built" ON)
-option(BUILD_TOOLS "Specifies whether tools should be built" ON)
-option(BUILD_MODULES "Specifies whether prj.modules should be built" OFF)
-option(BUILD_TESTS "Specifies whether prj.tests should be built" ON)
-option(BUILD_DOCUMENTATION "Specifies whether DoxyGen documentation should be built" OFF)
-option(BUILD_WITH_PCH "Specifies whether to use precompiled headers" ON)
-option(DISABLE_TICKER_OUTPUT "Disale ticker output" OFF)
-option(DISABLE_AR_WARNINGS "Disale AR_WARNING macro output" OFF)
-option(DISABLE_WARN_3RD "Disable warnings for thirdparty libraries" ON)
+option(BUILD_WITH_PCH "Specifies whether to use precompiled headers" OFF)
 
 if(NOT WIN32)
   option(BUILD_32BIT "Force to build x32" OFF)
@@ -123,54 +115,48 @@ endif()
 
 # Setting output directories
 # -----------------------------------------------------------------------
-if (BUILD_ROS_PACKAGE)
-  # Find OpenCV
-  # -----------------------------------------------------------------------
-  find_package(OpenCV 3.1 REQUIRED)
-else()
-  # Runtime output directory
-  # -----------------------------------------------------------------------
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY         "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.${CONFIGURATION}")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.debug")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.release")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.relwithdeb")
-  if( BUILD_SUFFIX )
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY         "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
-  endif()
-  # Library output directory
-  # -----------------------------------------------------------------------
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY         "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.${CONFIGURATION}")
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.debug")
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.release")
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.relwithdeb")
-  if( BUILD_SUFFIX )
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY         "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
-  endif()
-
-  # Archive output directory
-  # -----------------------------------------------------------------------
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.${CONFIGURATION}")
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.debug")
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.release")
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.relwithdeb")
-  if( BUILD_SUFFIX )
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
-  endif()
-  set(CMAKE_3RDPARTY_LIBRARY_DIRECTORY       "${CMAKE_SOURCE_DIR}/lib/${PLATFORM}")
-
-  # Find OpenCV
-  # -----------------------------------------------------------------------
-  # find_package(OpenCV REQUIRED)
+# Runtime output directory
+# -----------------------------------------------------------------------
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY         "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.${CONFIGURATION}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.debug")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.release")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.relwithdeb")
+if( BUILD_SUFFIX )
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY         "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
 endif()
+# Library output directory
+# -----------------------------------------------------------------------
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY         "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.${CONFIGURATION}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.debug")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.release")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}/bin.${PLATFORM}.relwithdeb")
+if( BUILD_SUFFIX )
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY         "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
+endif()
+
+# Archive output directory
+# -----------------------------------------------------------------------
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.${CONFIGURATION}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.debug")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.release")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_CURRENT_BINARY_DIR}/lib.${PLATFORM}.${CRT}.relwithdeb")
+if( BUILD_SUFFIX )
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}.${BUILD_SUFFIX}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG}.${BUILD_SUFFIX}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE}.${BUILD_SUFFIX}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO}.${BUILD_SUFFIX}")
+endif()
+set(CMAKE_3RDPARTY_LIBRARY_DIRECTORY       "${CMAKE_SOURCE_DIR}/lib/${PLATFORM}")
+
+# Find OpenCV
+# -----------------------------------------------------------------------
+# find_package(OpenCV REQUIRED)
 
 # Find OpenMP
 # -----------------------------------------------------------------------
@@ -179,19 +165,14 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 
-# determine dlib version
-set(DLIB_VERSION "18.14")
 message("COMPILER_ID is ${COMPILER_ID}")
-if (COMPILER_ID STREQUAL "gcc" OR COMPILER_ID STREQUAL "vc2015")
-  set(DLIB_VERSION "19.4")
-endif()
 
 # Include directories
 # -----------------------------------------------------------------------
 include_directories(
-  ${OpenCV_INCLUDE_DIRS}
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}/xhelpers
 )
 
 if(MSVC)
@@ -260,4 +241,5 @@ add_definitions(-DTIXML_USE_STL)
 
 # Add project collections to build tree.
 # -----------------------------------------------------------------------
-add_subdirectory(include)
+add_subdirectory(xhelpers)
+add_subdirectory(test)

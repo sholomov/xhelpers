@@ -1,5 +1,7 @@
 project(xhelpers)
 
+add_subdirectory(portability)
+
 set(xhelpers_hdr
   sx_cast.h
   sx_findfile.h
@@ -18,15 +20,10 @@ set(xhelpers_src
   src/sx_system.cpp
 )
 
-set(thirdparty
-  portability/filesystem_system.cpp
-  portability/filesystem_fixes.cpp
-)
 
 add_library(xhelpers 
   ${xhelpers_hdr}
   ${xhelpers_src}
-  ${thirdparty_src}
 )
 
-target_link_libraries(xhelpers)
+target_link_libraries(xhelpers portability)

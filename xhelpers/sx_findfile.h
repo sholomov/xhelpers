@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 
-#include <sx_system.h>
-#include <sx_path.h>
+#include <xhelpers/sx_system.h>
+#include <xhelpers/sx_path.h>
 
 #ifdef WIN32
 #include <io.h>
@@ -72,8 +72,8 @@ protected:
   size_t gv_off;
 #endif
 
-  xpath xpMask;
-  xpath xpFilePath;
+  xstring xpMask;
+  xstring xpFilePath;
   bool  can_reply;
 
 #ifndef WIN32
@@ -213,10 +213,24 @@ inline const char* xfindfile::fileName()
 #endif
 }
 
+// Оставляем только путь (без имени и расширения, в конце - '/')
+inline xstring cutPath(const xstring& s)
+{
+  using namespace std;
+  char buf[_MAX_PATH] = {0};
+
+  strcpy(buf, s.c_str());
+  char *p = max(strrchr(buf, '/'), strrchr(buf, '\\'));
+  if (p) p[1] = 0;
+  else buf[0] = 0;
+
+  return xstring(buf);
+}
+
 // Полный путь к текущему в рамках перебора файлу
 inline const char* xfindfile::filePath()
 { 
-  xpFilePath = can_reply ? xpath(xpMask).cutPath().checkSlash()+=xpath(fileName()) : "";
+  xpFilePath = can_reply ? cutPath(xpMask) += xstring(fileName()) : "";
   return can_reply ? xpFilePath.c_str() : 0;
 }
 

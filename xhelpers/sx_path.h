@@ -11,9 +11,9 @@
 
 #include <stdlib.h>
 
-#include <sx_system.h>
-#include <sx_string.h>
-#include <sx_findfile.h>
+#include <xhelpers/sx_system.h>
+#include <xhelpers/sx_string.h>
+#include <xhelpers/sx_findfile.h>
 
 namespace sx {
 
@@ -142,14 +142,14 @@ namespace sx {
   // Todo: reimplement to return module filename, not directory
   inline xpath& xpath::getModuleFileName()
   {
-    *this = ar::Filesystem::moduleDirPath();
+    *this = Filesystem::moduleDirPath();
     return *this;
   }
 
   // Возвращает полный путь кисполняемому модулю (в конце - '/')
   inline xpath& xpath::getModuleDirPath()                            
   {
-    *this = ar::Filesystem::moduleDirPath();
+    *this = Filesystem::moduleDirPath();
     return *this;
   }
 
@@ -160,7 +160,7 @@ namespace sx {
   // Возвращает полный путь к текущей директории
   inline xpath& xpath::getCurrentDirectory()
   {
-    *this = ar::Filesystem::currentDirectory();
+    *this = Filesystem::currentDirectory();
     canonize();
 
     return *this;         
@@ -168,7 +168,7 @@ namespace sx {
 
   inline xpath& xpath::getTempPath(void)
   {
-    *this = ar::Filesystem::tempDirectory();
+    *this = Filesystem::tempDirectory();
     canonize();
 
     return *this;         
@@ -378,7 +378,7 @@ namespace sx {
   // Преобразует данный xpath к полному пути
   inline xpath& xpath::getFullPathName()
   {
-    *this = ar::Filesystem::absolutePath(*this);
+    *this = Filesystem::absolutePath(*this);
     canonize();
 
     return *this;
@@ -605,19 +605,19 @@ namespace sx {
   // Обеспечивает существование папки по заданному пути
   inline bool xpath::ensureFolder()
   {
-    return ar::Filesystem::ensureFolder(*this);
+    return Filesystem::ensureFolder(*this);
   }
 
   // Копирует файл по заданному пути
   inline bool xpath::copyTo(const char* file)
   {
-    return ar::Filesystem::copy(*this, std::string(file));
+    return Filesystem::copy(*this, std::string(file));
   }
 
   // Передвигает файл по заданному пути
   inline bool xpath::moveTo(const char* file)
   {
-    return ar::Filesystem::rename(*this, std::string(file));
+    return Filesystem::rename(*this, std::string(file));
   }
 
   // Удаление файла по текущему пути
@@ -625,13 +625,13 @@ namespace sx {
   {
     if(!exists())
       return true;
-    return ar::Filesystem::remove(*this);
+    return Filesystem::remove(*this);
   }
 
   // Проверка существования файла/директории по текущему пути
   inline bool xpath::exists()
   {
-    return ar::Filesystem::isFileExist(*this) || ar::Filesystem::isDirExist(*this);
+    return Filesystem::isFileExist(*this) || Filesystem::isDirExist(*this);
   }
 
   //!< Получить полный путь относительно директории <szHomeDir>

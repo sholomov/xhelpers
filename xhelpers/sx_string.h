@@ -7,7 +7,7 @@
 #ifndef SX_STRING_H
 #define SX_STRING_H
 
-#include <sx_str.h>
+#include <xhelpers/sx_str.h>
 
 #include <string>
 #include <vector>
