@@ -1,6 +1,6 @@
-//! @file     arcore/sx_system.h
-//! @author   Usilin Sergey
-//! @author   Sholomov Dmitry
+//! @file     xhelpers/sx_system.h
+//! @authors  Usilin Sergey, Polevoy Dmitry, 
+//! @author   Sholomov Dmitry (support)
 //! @brief    File operations, system operations
 
 #pragma once
@@ -12,10 +12,10 @@
 
 namespace sx
 {
-//! @addtogroup prj_core_arcore_sysutils 
+//! @addtogroup xhelpers 
 //! @{
 
-//! @class Filesystem filesystem.h arcore/sysutils.h
+//! @class Filesystem sx_system.h xhelpers/sx_system.h
 //! @brief Фaйловые операции.
 class Filesystem
 {
@@ -34,13 +34,9 @@ public:
   static std::string getFileDir(const std::string &path);     //!< Возвращает путь к директории по имени файла.
     
   static bool ensureFolder(const std::string &path);          //!< Обеспечивает существование папки по заданному пути.
-    
-  //! Возвращает true, если удалось удалить указаный файл или папку
-  static bool remove(const std::string &path);
-  //! Возвращает true, если удалось переименовать указаный файл или папку
-  static bool rename(const std::string &pathFrom, const std::string &pathTo);
-  //! Возвращает true, если удалось скопировать указаный файл (для папок не реализовано)
-  static bool copy(const std::string &pathFrom, const std::string &pathTo);                
+  static bool remove(const std::string &path);                //! Возвращает true, если удалось удалить указаный файл или папку
+  static bool rename(const std::string &pathFrom, const std::string &pathTo); //! Возвращает true, если удалось переименовать указаный файл или папку
+  static bool copy(const std::string &pathFrom, const std::string &pathTo);   //! Возвращает true, если удалось скопировать файл (для папок не реализовано)
 
 private:
   Filesystem();                                               //!< Конструктор по-умолчанию (запрещен)
@@ -51,7 +47,7 @@ private:
 };
 
 //! @}
-} // namespace ar
+} // namespace sx
 
 
-#endif  // ARCORE_FILESYSTEM_H
+#endif  // SX_SYSTEM_H

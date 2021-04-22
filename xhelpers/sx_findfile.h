@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 #include <xhelpers/sx_system.h>
-#include <xhelpers/sx_path.h>
+#include <xhelpers/sx_string.h>
 
 #ifdef WIN32
 #include <io.h>
