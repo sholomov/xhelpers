@@ -59,11 +59,11 @@ namespace sx
                                                           //!< of digits in fraction of a second
     timestamp& fromString(const std::string& sTime);      //!< Generate timestamp from std::string representation in UTC format
 
-                                                          // Casting operators
+    // Casting operators
     operator std::string() const;                         //!< Generate std::string for the time in UTC format
     operator tm() const;                                  //!< Converting tv_sec to tm structure, tv_nsec is ommitted
 
-                                                          // Getting values
+    // Getting values
     int year() const;                                     //!< get years since 1900
     int mon() const;                                      //!< get months since January - [0,11]
     int day() const;                                      //!< get day of the month - [1,31]
@@ -75,13 +75,13 @@ namespace sx
     double usec() const;                                  //!< get microseconds
     long nsec() const;                                    //!< get nanoseconds
 
-                                                          // Setting values
+    // Setting values
     timestamp& set_msec(double msec);                     //!< set milliseconds
     timestamp& set_usec(double usec);                     //!< set microseconds
     timestamp& set_nsec(long nsec);                       //!< set nanoseconds
     timestamp& set_bias(const std::string& sBias);        //!< set non-local time bias and recalculate time value to local
 
-                                                          // Arithmetics
+    // Arithmetics
     timestamp& operator+=(const timestamp& dtime);        //!< Add time delta to the current time value
     timestamp& operator-=(const timestamp& dtime);        //!< Subtract time delta from the current time value. Note: may be negative
     timestamp& operator+=(double dsec);                   //!< Add time delta (in double seconds) to the current time value
@@ -91,18 +91,18 @@ namespace sx
     timestamp operator-();                                //!< Negative operator, returns minus val
     timestamp abs();                                      //!< Returns absolute value
 
-                                                          // Comparisons
+    // Comparisons
     bool operator==(const timestamp& dtime) const;        //!< Equal, true if the timestamp is equal to dtime
     bool operator<(const timestamp& dtime) const;         //!< Less, true if the timestamp is less than dtime
     bool operator>(const timestamp& dtime) const;         //!< Greater, true if the timestamp is greater than dtime
     bool operator<=(const timestamp& dtime) const;        //!< Not greater, true if the timestamp is less or equal to dtime
     bool operator>=(const timestamp& dtime) const;        //!< Not less, true if the timestamp is greater or equal to dtime
 
-                                                          // Stream serialization
+    // Stream serialization
     friend std::istream& operator>>(std::istream& str, ar::timestamp& ts);       //!< Read myself from stream
     friend std::ostream& operator<<(std::ostream& str, const ar::timestamp& ts); //!< Write myself to stream
 
-                                                                                 // Static functions
+    // Static functions
     static timestamp diff(const timestamp& start, const timestamp& stop);         //!< Calculate time difference interval. Note: may be negative
     static std::string timeZone();                                                //!< Local time zone in string format, e.g. "+03:00"
     static long bias(const std::string& sTimeZone = "");                          //!< Offset from greenwich time in minutes, e.g. "+03:00" -> -180
