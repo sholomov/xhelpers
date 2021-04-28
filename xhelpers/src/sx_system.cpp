@@ -1,7 +1,7 @@
 //!
-//! @file     arcore/sx_system.h
-//! @author   Usilin Sergey
-//! @author   Sholomov Dmitry
+//! @file     xhelpers/sx_system.cpp
+//! @authors  Usilin Sergey, Polevoy Dmitry, 
+//! @author   Sholomov Dmitry (support)
 //! @brief    File operations, system operations
 //!
 
