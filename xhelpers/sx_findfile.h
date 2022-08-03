@@ -1,7 +1,6 @@
 //!
 //!@file    xhelpers/sx_findfile.h
 //!@author  Sholomov Dmitry
-//!@author  Postnikov Vassili
 //!@brief   Helper class for iterative file access by directory mask. Analog for XFindFile-class in CForms project
 //!@note    Implementation is partly based on arcore library, so arcore.lib linking is required
 //!

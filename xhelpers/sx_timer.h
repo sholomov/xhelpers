@@ -1,7 +1,6 @@
 //!
 //!@file    xhelpers/sx_timer.h
 //!@author  Sholomov Dmitry
-//!@author  Postnikov Vassili
 //!@brief   Helper class for timer operations. Analog for XTimer-class in CForms project
 //!@note    Implementation is partly based on arcore library, so arcore.lib linking is required
 //!
